@@ -9,7 +9,7 @@ package assignment2;
  */
 public class Account {
     //Creating basic attributes
-    String accountName = "", bankID = "";
+    String accountName, bankID;
     double bankBalance, depositAmount, withdrawAmount;
     //Creating static instance variables
     static int oneDollarBill = 1, fiveDollarBill = 5, tenDollarBill = 10, twentyDollarBill = 20,
@@ -25,6 +25,7 @@ public class Account {
     public Account(String accountName, double bankBalance, String bankID){
         this.accountName = accountName;
         this.bankBalance = bankBalance;
+        this.bankID = bankID;
     }
     
     /**
@@ -84,11 +85,7 @@ public class Account {
                "\nAccount Name : " + this.accountName +
                "\nBank Balance : " + this.bankBalance +
                "\nBank ID      : " + this.bankID +
-               "\nInterest Rate: " + this.bankID +
+               "\nInterest Rate: " + (this.interestRate*100) + "%" +
                "\n---------------------------------------------\n";
     }
-
-    
-
-
 }
