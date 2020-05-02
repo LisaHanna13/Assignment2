@@ -8,5 +8,14 @@ package assignment2;
  * @author lisa-
  */
 public class Account {
+    //Creating basic attributes
+    String acountName;
+    Double bankBalance, depositAmount, withdrawAmount;
+    
+    public Account(String accountName, double bankBalance){
+        this.acountName = accountName;
+        this.bankBalance = bankBalance;
+    }
+    
 
 }
