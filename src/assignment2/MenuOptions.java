@@ -16,12 +16,14 @@ public class MenuOptions {
     
     public String toString(){
         return "Please choose one option: " +
-               "\n----------------------------------------" +
+               "\n---------------------------------------------------" +
                "\n1- Print Bank Balance" +
                "\n2- Deposit Money Into Account" +
                "\n3- Withdraw Money From Account" +
                "\n4- Transfer Money to Another Account" +
-               "\n----------------------------------------";
+               "\n5- See Future Bank Balance Based on Interest Rate" +
+               "\n6- Exit" +
+               "\n---------------------------------------------------\n";
     }
     
 }
