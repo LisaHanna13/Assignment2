@@ -210,7 +210,7 @@ public class Client {
                             System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
                         }else{
                             //Print instructions
-                            System.out.println("Here are the two other accounts available: " + account2.getAccountName() + ", and " + account3.getAccountName());
+                            System.out.println("\nHere are the two other accounts available: " + account2.getAccountName() + ", and " + account3.getAccountName());
                             System.out.println("Please make sure to enter their full name.");
                             System.out.print("Which account would you like to transfer the money to?: ");
                             
@@ -292,12 +292,408 @@ public class Client {
             //PART 5: IF SECOND ACCOUNT IS CHOSEN
             //------------------------------------------------------------------------------------------------------------------
             case 2:
+                //Greet the account owner
+                System.out.println("\nGood day, " + account2.getAccountName() + ".");
+                do{
+                    //Print menu options
+                    System.out.println(menu);
+                    //Make sure user chooses an int
+                    while(!keyboard.hasNextInt()){
+                        System.out.print("That is not an integer. Please try again:");
+                        keyboard.next();
+                    }
+                    //Store the data
+                    menuChoice = keyboard.nextInt();
+                    
+                    //Create the if statement that is based on bank menu
+                    
+                    //PART A: MENU CHOICE 1
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    if (menuChoice == 1){
+                        System.out.println("You have chosen to print a bank statement.");
+                        //Print bank statement
+                        System.out.println(account2);
+                        //Increment the counter for this menu option
+                        counter1++;
+                        
+                    //PART B: MENU CHOICE 2
+                    //-----------------------------------------------------------------------------------------------------------  
+                    
+                    }else if (menuChoice == 2){
+                        System.out.println("You have chosen to deposit money into your account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not deposit more than 100$ at a time.");
+                        System.out.print("How much would you like to deposit?: ");
+                       
+                        //Make sure the deposit is a valid value.
+                        while (!keyboard.hasNextDouble()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        deposit = keyboard.nextDouble();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (deposit >100 || deposit <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        } else{
+                            //Increment the counter for this menu option
+                            counter2++;
+                            //Use the accessor deposit to reset the value of bankBalance
+                            account2.setBalance(account2.getBankBalance() + deposit);
+                            System.out.println("Your bank balance is now " + String.format("%.2f",account2.bankBalance) + "$.\n");
+                        }
+                    
+                    //PART C: MENU CHOICE 3
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    }else if (menuChoice == 3){
+                        System.out.println("You have chosen to withdraw money from your account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not withdraw more than 100$ at a time, and you may not withdraw cents.");
+                        System.out.print("How much would you like to withdraw?: ");
+                        
+                        //Make sure the value is a double
+                        while (!keyboard.hasNextInt()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        withdraw = keyboard.nextInt();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (withdraw >100 || withdraw <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        }else{
+                            //Increment the counter for this menu option
+                            counter3++;
+                            //Use the accessor withdraw to reset the value of bankBalance
+                            account2.setBalance(account2.getBankBalance() - withdraw);
+                            
+                            //Print new balance
+                             System.out.println("Your bank balance is now " + String.format("%.2f",account2.bankBalance) + "$.");
+                            
+                            //CHALLENGE PART: Give money back with least amount of bills
+                            countHundredDollarBill = withdraw/100;
+                            int remainder = withdraw%100;
+                            countFiftyDollarBill = remainder/50;
+                            int remainder2 = remainder%50;
+                            countTwentyDollarBill = remainder2/20;
+                            int remainder3 = remainder2%20;
+                            countTenDollarBill =remainder3/10;
+                            int remainder4 = remainder3%10;
+                            countFiveDollarBill = remainder4/5;
+                            int remainder5 = remainder4%5;
+                            countOneDollarBill = remainder5/1;
+                            System.out.println("You were given back (" + countHundredDollarBill + ") 100$ bills, (" + countFiftyDollarBill + 
+                                    ") 50$ bills, (" + countTwentyDollarBill + ") 20$ bills, (" + countTenDollarBill + ") 10$ bills, (" + 
+                                    countFiveDollarBill + ") 5$ bills, and (" + countOneDollarBill + ") 1$ bills.\n");
+                        }
+                        
+                    //PART D: MENU CHOICE 4
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    }else if (menuChoice == 4){
+                        System.out.println("You have chosen to transfer money into another account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not transfer more than 100$ at a time.");
+                        System.out.print("How much would you like to transfer?: ");
+                        
+                        //Make sure the value is a double
+                        while (!keyboard.hasNextDouble()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        transferMoney = keyboard.nextDouble();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (transferMoney >100 || transferMoney <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        }else{
+                            //Print instructions
+                            System.out.println("\nHere are the two other accounts available: " + account1.getAccountName() + ", and " + account3.getAccountName());
+                            System.out.println("Please make sure to enter their full name.");
+                            System.out.print("Which account would you like to transfer the money to?: ");
+                            
+                            //This is a problem I have noticed with java since the beginning of the semester; when trying to use keyboard.nextLine() two times
+                            //in a file, you must first register a blank string, otherwise they keyboard.nextLine() will not be activated.
+                            String blank = keyboard.nextLine();
+                            //Store the data
+                            String accountChoice = keyboard.nextLine();
+                            
+                            //Use if's to see which account to transfer the money to
+                            if (accountChoice.equalsIgnoreCase(account1.accountName)){
+                                //Increment the counter for this menu option
+                                counter4++;
+                                
+                                //ACCOUNT 2
+                                account1.setBalance(account1.bankBalance + transferMoney);
+                                account2.setBalance(account2.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account1.accountName);
+                                System.out.println("Your bank balance is now " + String.format("%.2f",account2.getBankBalance()) + ".\n");
+                                
+                            }else if (accountChoice.equalsIgnoreCase(account3.accountName)){
+                                //Increment the counter for this menu option
+                                 counter4++;
+                                 
+                                //ACCOUNT 3
+                                account3.setBalance(account3.bankBalance + transferMoney);
+                                account2.setBalance(account2.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account3.accountName);
+                                System.out.println("Your bank balance is now " + account2.getBankBalance() + ".\n");
+                            }else{
+                                System.out.println("Sorry, that is not a valid account. You will have to try again.\n");
+                            }
+                            
+                        }
+                             
+                    //PART E: MENU CHOICE 5
+                    //-----------------------------------------------------------------------------------------------------------   
+                    
+                    }else if (menuChoice == 5){
+                        counter5++;
+                        System.out.println("You have chosen to see your future bank balance based on our interest rate.");
+                        System.out.println("Your current bank balance is: " + account2.getBankBalance() + "$.");
+                        System.out.println("Note, the interest rate at the Ocean Trust bank is " + account2.getInterestRate()*100 + "%.");
+                        
+                        //Do the calculation to get the future bank balance values
+                        double balance1Year = Math.pow((1 + account2.getInterestRate()),1);
+                        double oneYearResult = account2.bankBalance * balance1Year;
+                        double balance5Years = Math.pow((1 + account2.getInterestRate()),5);
+                        double fiveYearsResult = account2.bankBalance * balance5Years;
+                        double balance10Years = Math.pow((1 + account2.getInterestRate()),10);
+                        double tenYearsResult = account2.bankBalance * balance10Years;
+                       
+                        //Print the results
+                        System.out.println("\nYour balance in 1 year will be: " + String.format("%.2f", oneYearResult));
+                        System.out.println("Your balance in 5 years will be: " + String.format("%.2f", fiveYearsResult));
+                        System.out.println("Your balance in 10 years will be: " + String.format("%.2f", tenYearsResult) + "\n");
+                        
+                    //PART F: FIND OTHER ACCOUNT WITH SAME BANK ID
+                    //----------------------------------------------------------------------------------------------------------- 
+                    }else if (menuChoice == 6){
+                        counter6++;
+                        System.out.println("You have chosen to see if you own another account in this bank");
+                        Boolean otherAccount = account2.equals(account1);
+                        Boolean otherAccount2 = account2.equals(account3);
+                        if (otherAccount == false && otherAccount2 == false){
+                            System.out.println("You do not own any other account in this bank.\n");
+                        }else System.out.println("You do own another account in this bank.\n");
+                        
+                    //PART F: MENU CHOICE NOT VALID
+                    //----------------------------------------------------------------------------------------------------------- 
+                    }else if (menuChoice != 7){
+                        System.out.println("That is not a valid option. Please try again.\n");
+                    }
+                }while (menuChoice != 7);
                 
                 break;
                 
             //PART 6: IF THIRD ACCOUNT IS CHOSEN
             //------------------------------------------------------------------------------------------------------------------
             case 3:
+                //Greet the account owner
+                System.out.println("\nGood day, " + account3.getAccountName() + ".");
+                do{
+                    //Print menu options
+                    System.out.println(menu);
+                    //Make sure user chooses an int
+                    while(!keyboard.hasNextInt()){
+                        System.out.print("That is not an integer. Please try again:");
+                        keyboard.next();
+                    }
+                    //Store the data
+                    menuChoice = keyboard.nextInt();
+                    
+                    //Create the if statement that is based on bank menu
+                    
+                    //PART A: MENU CHOICE 1
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    if (menuChoice == 1){
+                        System.out.println("You have chosen to print a bank statement.");
+                        //Print bank statement
+                        System.out.println(account3);
+                        //Increment the counter for this menu option
+                        counter1++;
+                        
+                    //PART B: MENU CHOICE 2
+                    //-----------------------------------------------------------------------------------------------------------  
+                    
+                    }else if (menuChoice == 2){
+                        System.out.println("You have chosen to deposit money into your account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not deposit more than 100$ at a time.");
+                        System.out.print("How much would you like to deposit?: ");
+                       
+                        //Make sure the deposit is a valid value.
+                        while (!keyboard.hasNextDouble()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        deposit = keyboard.nextDouble();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (deposit >100 || deposit <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        } else{
+                            //Increment the counter for this menu option
+                            counter2++;
+                            //Use the accessor deposit to reset the value of bankBalance
+                            account3.setBalance(account3.getBankBalance() + deposit);
+                            System.out.println("Your bank balance is now " + String.format("%.2f",account3.bankBalance) + "$.\n");
+                        }
+                    
+                    //PART C: MENU CHOICE 3
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    }else if (menuChoice == 3){
+                        System.out.println("You have chosen to withdraw money from your account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not withdraw more than 100$ at a time, and you may not withdraw cents.");
+                        System.out.print("How much would you like to withdraw?: ");
+                        
+                        //Make sure the value is a double
+                        while (!keyboard.hasNextInt()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        withdraw = keyboard.nextInt();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (withdraw >100 || withdraw <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        }else{
+                            //Increment the counter for this menu option
+                            counter3++;
+                            //Use the accessor withdraw to reset the value of bankBalance
+                            account3.setBalance(account3.getBankBalance() - withdraw);
+                            
+                            //Print new balance
+                             System.out.println("Your bank balance is now " + String.format("%.2f",account3.bankBalance) + "$.");
+                            
+                            //CHALLENGE PART: Give money back with least amount of bills
+                            countHundredDollarBill = withdraw/100;
+                            int remainder = withdraw%100;
+                            countFiftyDollarBill = remainder/50;
+                            int remainder2 = remainder%50;
+                            countTwentyDollarBill = remainder2/20;
+                            int remainder3 = remainder2%20;
+                            countTenDollarBill =remainder3/10;
+                            int remainder4 = remainder3%10;
+                            countFiveDollarBill = remainder4/5;
+                            int remainder5 = remainder4%5;
+                            countOneDollarBill = remainder5/1;
+                            System.out.println("You were given back (" + countHundredDollarBill + ") 100$ bills, (" + countFiftyDollarBill + 
+                                    ") 50$ bills, (" + countTwentyDollarBill + ") 20$ bills, (" + countTenDollarBill + ") 10$ bills, (" + 
+                                    countFiveDollarBill + ") 5$ bills, and (" + countOneDollarBill + ") 1$ bills.\n");
+                        }
+                        
+                    //PART D: MENU CHOICE 4
+                    //-----------------------------------------------------------------------------------------------------------
+                    
+                    }else if (menuChoice == 4){
+                        System.out.println("You have chosen to transfer money into another account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not transfer more than 100$ at a time.");
+                        System.out.print("How much would you like to transfer?: ");
+                        
+                        //Make sure the value is a double
+                        while (!keyboard.hasNextDouble()){
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
+                        }
+                        //Store the data
+                        transferMoney = keyboard.nextDouble();
+                        
+                        //Make sure the deposit is not over the limit.
+                        if (transferMoney >100 || transferMoney <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        }else{
+                            //Print instructions
+                            System.out.println("\nHere are the two other accounts available: " + account2.getAccountName() + ", and " + account1.getAccountName());
+                            System.out.println("Please make sure to enter their full name.");
+                            System.out.print("Which account would you like to transfer the money to?: ");
+                            
+                            //This is a problem I have noticed with java since the beginning of the semester; when trying to use keyboard.nextLine() two times
+                            //in a file, you must first register a blank string, otherwise they keyboard.nextLine() will not be activated.
+                            String blank = keyboard.nextLine();
+                            //Store the data
+                            String accountChoice = keyboard.nextLine();
+                            
+                            //Use if's to see which account to transfer the money to
+                            if (accountChoice.equalsIgnoreCase(account2.accountName)){
+                                //Increment the counter for this menu option
+                                counter4++;
+                                
+                                //ACCOUNT 2
+                                account2.setBalance(account2.bankBalance + transferMoney);
+                                account3.setBalance(account3.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account2.accountName);
+                                System.out.println("Your bank balance is now " + String.format("%.2f",account3.getBankBalance()) + ".\n");
+                                
+                            }else if (accountChoice.equalsIgnoreCase(account1.accountName)){
+                                //Increment the counter for this menu option
+                                 counter4++;
+                                 
+                                //ACCOUNT 3
+                                account1.setBalance(account1.bankBalance + transferMoney);
+                                account3.setBalance(account3.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account1.accountName);
+                                System.out.println("Your bank balance is now " + account3.getBankBalance() + ".\n");
+                            }else{
+                                System.out.println("Sorry, that is not a valid account. You will have to try again.\n");
+                            }
+                            
+                        }
+                             
+                    //PART E: MENU CHOICE 5
+                    //-----------------------------------------------------------------------------------------------------------   
+                    
+                    }else if (menuChoice == 5){
+                        counter5++;
+                        System.out.println("You have chosen to see your future bank balance based on our interest rate.");
+                        System.out.println("Your current bank balance is: " + account3.getBankBalance() + "$.");
+                        System.out.println("Note, the interest rate at the Ocean Trust bank is " + account3.getInterestRate()*100 + "%.");
+                        
+                        //Do the calculation to get the future bank balance values
+                        double balance1Year = Math.pow((1 + account3.getInterestRate()),1);
+                        double oneYearResult = account3.bankBalance * balance1Year;
+                        double balance5Years = Math.pow((1 + account3.getInterestRate()),5);
+                        double fiveYearsResult = account3.bankBalance * balance5Years;
+                        double balance10Years = Math.pow((1 + account3.getInterestRate()),10);
+                        double tenYearsResult = account3.bankBalance * balance10Years;
+                       
+                        //Print the results
+                        System.out.println("\nYour balance in 1 year will be: " + String.format("%.2f", oneYearResult));
+                        System.out.println("Your balance in 5 years will be: " + String.format("%.2f", fiveYearsResult));
+                        System.out.println("Your balance in 10 years will be: " + String.format("%.2f", tenYearsResult) + "\n");
+                        
+                    //PART F: FIND OTHER ACCOUNT WITH SAME BANK ID
+                    //----------------------------------------------------------------------------------------------------------- 
+                    }else if (menuChoice == 6){
+                        counter6++;
+                        System.out.println("You have chosen to see if you own another account in this bank");
+                        Boolean otherAccount = account3.equals(account2);
+                        Boolean otherAccount2 = account3.equals(account1);
+                        if (otherAccount == false && otherAccount2 == false){
+                            System.out.println("You do not own any other account in this bank.\n");
+                        }else System.out.println("You do own another account in this bank.\n");
+                        
+                    //PART F: MENU CHOICE NOT VALID
+                    //----------------------------------------------------------------------------------------------------------- 
+                    }else if (menuChoice != 7){
+                        System.out.println("That is not a valid option. Please try again.\n");
+                    }
+                }while (menuChoice != 7);
                 break;
                 
             default:
