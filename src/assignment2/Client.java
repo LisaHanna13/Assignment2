@@ -5,6 +5,7 @@ package assignment2;
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+
 /**
  * This is the class that will be used to execute the constructors and methods
  * @author lisa-
@@ -195,7 +196,24 @@ public class Client {
                     //-----------------------------------------------------------------------------------------------------------   
                     
                     }else if (menuChoice == 5){
+                        counter5++;
+                        System.out.println("You have chosen to see your future bank balance based on our interest rate.");
+                        System.out.println("Your current bank balance is: " + account1.getBankBalance() + "$.");
+                        System.out.println("Note, the interest rate at the Ocean Trust bank is " + account1.getInterestRate()*100 + "%.");
+                        
+                        //Do the calculation to get the future bank balance values
+                        double balance1Year = Math.pow((1 + account1.getInterestRate()),1);
+                        double oneYearResult = account1.bankBalance * balance1Year;
+                        double balance5Years = Math.pow((1 + account1.getInterestRate()),5);
+                        double fiveYearsResult = account1.bankBalance * balance5Years;
+                        double balance10Years = Math.pow((1 + account1.getInterestRate()),10);
+                        double tenYearsResult = account1.bankBalance * balance10Years;
                        
+                        //Print the results
+                        System.out.println("\nYour balance in 1 year will be: " + String.format("%.2f", oneYearResult));
+                        System.out.println("Your balance in 5 years will be: " + String.format("%.2f", fiveYearsResult));
+                        System.out.println("Your balance in 10 years will be: " + String.format("%.2f", tenYearsResult) + "\n");
+                        
                     //PART F: MENU CHOICE NOT VALID
                     //----------------------------------------------------------------------------------------------------------- 
                     }else if (menuChoice != 6){
