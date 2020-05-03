@@ -137,7 +137,7 @@ public class Client {
                             //Increment the counter for this menu option
                             counter2++;
                             //Use the accessor deposit to reset the value of bankBalance
-                            account1.deposit(bankBalance1 + deposit);
+                            account1.deposit(account1.getBankBalance() + deposit);
                             System.out.println("Your bank balance is now " + String.format("%.2f",account1.bankBalance) + "$.\n");
                         }
                     
@@ -165,7 +165,7 @@ public class Client {
                             //Increment the counter for this menu option
                             counter3++;
                             //Use the accessor withdraw to reset the value of bankBalance
-                            account1.withdraw(bankBalance1 - deposit);
+                            account1.withdraw(account1.getBankBalance() - deposit);
                             
                             //Print new balance
                              System.out.println("Your bank balance is now " + String.format("%.2f",account1.bankBalance) + "$.");
@@ -191,7 +191,9 @@ public class Client {
                     //-----------------------------------------------------------------------------------------------------------
                     
                     }else if (menuChoice == 4){
-                    
+                        System.out.println("You have chosen to transfer money into another account.");
+                        
+                        
                     //PART E: MENU CHOICE 5
                     //-----------------------------------------------------------------------------------------------------------   
                     
@@ -214,12 +216,22 @@ public class Client {
                         System.out.println("Your balance in 5 years will be: " + String.format("%.2f", fiveYearsResult));
                         System.out.println("Your balance in 10 years will be: " + String.format("%.2f", tenYearsResult) + "\n");
                         
+                    //PART F: FIND OTHER ACCOUNT WITH SAME BANK ID
+                    //----------------------------------------------------------------------------------------------------------- 
+                    }else if (menuChoice == 6){
+                        System.out.println("You have chosen to see if you own another account in this bank");
+                        Boolean otherAccount = account1.equals(account2);
+                        Boolean otherAccount2 = account1.equals(account3);
+                        if (otherAccount == false && otherAccount2 == false){
+                            System.out.println("You do not own any other account in this bank.\n");
+                        }else System.out.println("You do own another account in this bank.\n");
+                        
                     //PART F: MENU CHOICE NOT VALID
                     //----------------------------------------------------------------------------------------------------------- 
-                    }else if (menuChoice != 6){
+                    }else if (menuChoice != 7){
                         System.out.println("That is not a valid option. Please try again.\n");
                     }
-                }while (menuChoice != 6);
+                }while (menuChoice != 7);
                 break;
                 
             //PART 5: IF SECOND ACCOUNT IS CHOSEN
