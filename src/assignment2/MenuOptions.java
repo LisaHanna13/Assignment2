@@ -8,7 +8,6 @@ package assignment2;
  * @author lisa-
  */
 public class MenuOptions {
-    
     /**
      * This empty constructor can be used to create a menu object
      */
@@ -22,8 +21,8 @@ public class MenuOptions {
                "\n3- Withdraw Money From Account" +
                "\n4- Transfer Money to Another Account" +
                "\n5- See Future Bank Balance Based on Interest Rate" +
-               "\n6- Exit" +
+               "\n6- Look for other account from same user" +
+               "\n7- Exit" +
                "\n---------------------------------------------------\n";
     }
-    
 }
