@@ -19,7 +19,7 @@ public class Account {
     //Creating static instance variables
     static double  oneDollarBill = 1, fiveDollarBill = 5, tenDollarBill = 10, twentyDollarBill = 20,
                    fiftyDollarBill = 50, hundredDollarBill = 100;
-    static double interestRate = 0.0009;
+    static double interestRate = 0.03;
     
     /**
      * This constructor is used to set up basic information about a bank account
@@ -38,16 +38,7 @@ public class Account {
      * This is therefore a mutator (setter)
      * @param BankBalance 
      */
-    void withdraw(double bankBalance){
-        this.bankBalance = bankBalance;
-    }
-    
-    /**
-     * When the client deposits an amount, the bankBalance must be set to a new value
-     * This is therefore a mutator (setter)
-     * @param bankBalance 
-     */
-    void deposit(double bankBalance){
+    void setBalance(double bankBalance){
         this.bankBalance = bankBalance;
     }
     
