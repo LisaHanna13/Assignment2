@@ -76,7 +76,7 @@ public class Client {
         
         //These variables will be incremented depending on which menuOption is picked. That way,
         //I can give a summary of the actions that the user did at the end of my program.
-        int counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, counter5 = 0;
+        int counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, counter5 = 0, counter6 = 0;
         
         //Create variables to count amount of bills (for withdraw method)
         int countOneDollarBill = 0, countFiveDollarBill = 0, countTenDollarBill = 0,
@@ -137,7 +137,7 @@ public class Client {
                             //Increment the counter for this menu option
                             counter2++;
                             //Use the accessor deposit to reset the value of bankBalance
-                            account1.deposit(account1.getBankBalance() + deposit);
+                            account1.setBalance(account1.getBankBalance() + deposit);
                             System.out.println("Your bank balance is now " + String.format("%.2f",account1.bankBalance) + "$.\n");
                         }
                     
@@ -165,7 +165,7 @@ public class Client {
                             //Increment the counter for this menu option
                             counter3++;
                             //Use the accessor withdraw to reset the value of bankBalance
-                            account1.withdraw(account1.getBankBalance() - deposit);
+                            account1.setBalance(account1.getBankBalance() - deposit);
                             
                             //Print new balance
                              System.out.println("Your bank balance is now " + String.format("%.2f",account1.bankBalance) + "$.");
@@ -192,8 +192,42 @@ public class Client {
                     
                     }else if (menuChoice == 4){
                         System.out.println("You have chosen to transfer money into another account.");
+                        //Print instructions
+                        System.out.println("Please note, you may not transfer more than 100$ at a time.");
+                        System.out.print("How much would you like to transfer?: ");
                         
+                        //Make sure the value is a double
+                        while (!keyboard.hasNextDouble()){
+                            System.out.println("That is not a valid input. Please try again: ");
+                            keyboard.nextLine();
+                        }
+                        //Store the data
+                        transferMoney = keyboard.nextDouble();
                         
+                        //Make sure the deposit is not over the limit.
+                        if (transferMoney >100 || transferMoney <= 0){
+                            System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
+                        }else{
+                            //Increment the counter for this menu option
+                            counter4++;
+                            
+                            //Print instructions
+                            System.out.println("Here are the two other accounts available: " + account2.getAccountName() + ", " + account3.getAccountName());
+                            System.out.println("Which account would you like to transfer the money to?");
+                            //Store the data
+                            String accountChoice = keyboard.next().trim();
+                            
+                            //Use if's to see which account to transfer the money to
+                            if (accountChoice.equalsIgnoreCase(account2.accountName)){
+                                account2.setBalance(account2.bankBalance + transferMoney);
+                            }else if (accountChoice.equalsIgnoreCase(account3.accountName)){
+                                account3.setBalance(account3.bankBalance + transferMoney);
+                            }else{
+                                System.out.println("Sorry, that is not a valid account. You will have to try again.");
+                            }
+                            
+                        }
+                             
                     //PART E: MENU CHOICE 5
                     //-----------------------------------------------------------------------------------------------------------   
                     
@@ -219,6 +253,7 @@ public class Client {
                     //PART F: FIND OTHER ACCOUNT WITH SAME BANK ID
                     //----------------------------------------------------------------------------------------------------------- 
                     }else if (menuChoice == 6){
+                        counter6++;
                         System.out.println("You have chosen to see if you own another account in this bank");
                         Boolean otherAccount = account1.equals(account2);
                         Boolean otherAccount2 = account1.equals(account3);
