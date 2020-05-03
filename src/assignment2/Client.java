@@ -208,22 +208,40 @@ public class Client {
                         if (transferMoney >100 || transferMoney <= 0){
                             System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
                         }else{
-                            //Increment the counter for this menu option
-                            counter4++;
-                            
                             //Print instructions
                             System.out.println("Here are the two other accounts available: " + account2.getAccountName() + ", " + account3.getAccountName());
-                            System.out.println("Which account would you like to transfer the money to?");
+                            System.out.print("Which account would you like to transfer the money to?: ");
+                            
+                            //This is a problem I have noticed with java since the beginning of the semester; when trying to use keyboard.nextLine() two times
+                            //in a file, you must first register a blank string, otherwise they keyboard.nextLine() will not be activated.
+                            String blank = keyboard.nextLine();
                             //Store the data
-                            String accountChoice = keyboard.next().trim();
+                            String accountChoice = keyboard.nextLine();
                             
                             //Use if's to see which account to transfer the money to
                             if (accountChoice.equalsIgnoreCase(account2.accountName)){
+                                //Increment the counter for this menu option
+                                counter4++;
+                                
+                                //ACCOUNT 2
                                 account2.setBalance(account2.bankBalance + transferMoney);
+                                account1.setBalance(account1.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account2.accountName);
+                                System.out.println("Your bank balance is now " + account1.getBankBalance() + ".\n");
+                                
                             }else if (accountChoice.equalsIgnoreCase(account3.accountName)){
+                                //Increment the counter for this menu option
+                                 counter4++;
+                                 
+                                //ACCOUNT 3
                                 account3.setBalance(account3.bankBalance + transferMoney);
+                                account1.setBalance(account1.bankBalance - transferMoney);
+                                //Print confirmation
+                                System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account3.accountName);
+                                System.out.println("Your bank balance is now " + account1.getBankBalance() + ".\n");
                             }else{
-                                System.out.println("Sorry, that is not a valid account. You will have to try again.");
+                                System.out.println("Sorry, that is not a valid account. You will have to try again.\n");
                             }
                             
                         }
