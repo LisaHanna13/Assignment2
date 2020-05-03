@@ -10,10 +10,15 @@ package assignment2;
 public class Account {
     //Creating basic attributes
     String accountName, bankID;
-    double bankBalance, depositAmount, withdrawAmount;
+    double bankBalance;
+  
+    //Create variables to count amount of bills (for withdraw method)
+    int withdraw, countOneDollarBill = 0, countFiveDollarBill = 0, countTenDollarBill = 0,
+        countTwentyDollarBill = 0, countFiftyDollarBill = 0, countHundredDollarBill = 0;
+    
     //Creating static instance variables
-    static int oneDollarBill = 1, fiveDollarBill = 5, tenDollarBill = 10, twentyDollarBill = 20,
-               fiftyDollarBill = 50, hundredDollarBill = 100;
+    static double  oneDollarBill = 1, fiveDollarBill = 5, tenDollarBill = 10, twentyDollarBill = 20,
+                   fiftyDollarBill = 50, hundredDollarBill = 100;
     static double interestRate = 0.0009;
     
     /**
@@ -83,9 +88,17 @@ public class Account {
                "\n               BANK STATEMENT" +
                "\n---------------------------------------------" +
                "\nAccount Name : " + this.accountName +
-               "\nBank Balance : " + this.bankBalance +
+               "\nBank Balance : " + this.bankBalance + "$" +
                "\nBank ID      : " + this.bankID +
                "\nInterest Rate: " + (this.interestRate*100) + "%" +
                "\n---------------------------------------------\n";
+    }
+    
+    /**
+     * Use this method to get the interest rate, useful for menu option 5
+     * @return interestRate
+     */
+    public double getInterestRate(){
+        return interestRate;
     }
 }
