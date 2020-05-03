@@ -301,7 +301,7 @@ public class Client {
                 System.out.print("Sorry, that is not a valid digit. The bank deems you an imposter. Please try again later. ");
                 bankIDDigit = keyboard.nextInt();
         }
-        //PART 7: FINISHING DETAILS
+        //PART 7: FINISHING TOUCHES
         //----------------------------------------------------------------------------------------------------------------------
         
         //Print out all the actions that were done by the user
@@ -315,8 +315,6 @@ public class Client {
         System.out.println("You have looked at future bank balance values " + counter5 + " times.");
         System.out.println("You have looked for another account " + counter6 + " times.");
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("We hope to see you again soon! Goodbye.");
-        
-        
+        System.out.println("We hope to see you again soon! Goodbye.");    
     }
 }
