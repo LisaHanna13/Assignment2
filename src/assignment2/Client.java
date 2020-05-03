@@ -184,7 +184,7 @@ public class Client {
                             countOneDollarBill = remainder5/1;
                             System.out.println("You were given back (" + countHundredDollarBill + ") 100$ bills, (" + countFiftyDollarBill + 
                                     ") 50$ bills, (" + countTwentyDollarBill + ") 20$ bills, (" + countTenDollarBill + ") 10$ bills, (" + 
-                                    countFiveDollarBill + ") 5$ bills, and (" + countOneDollarBill + ") 1% bills.\n");
+                                    countFiveDollarBill + ") 5$ bills, and (" + countOneDollarBill + ") 1$ bills.\n");
                         }
                         
                     //PART D: MENU CHOICE 4
@@ -301,6 +301,22 @@ public class Client {
                 System.out.print("Sorry, that is not a valid digit. The bank deems you an imposter. Please try again later. ");
                 bankIDDigit = keyboard.nextInt();
         }
+        //PART 7: FINISHING DETAILS
+        //----------------------------------------------------------------------------------------------------------------------
+        
+        //Print out all the actions that were done by the user
+        System.out.println("\nThank you for user the Ocean Trust Bank.");
+        System.out.println("Here is a summary of all the actions you have done in this session: ");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("You have printed a bank statement " + counter1 + " times.");
+        System.out.println("You have deposited money " + counter2 + " times.");
+        System.out.println("You have withdrawn money " + counter3 + " times.");
+        System.out.println("You have transfered money " + counter4 + " times.");
+        System.out.println("You have looked at future bank balance values " + counter5 + " times.");
+        System.out.println("You have looked for another account " + counter6 + " times.");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("We hope to see you again soon! Goodbye.");
+        
+        
     }
-    
 }
