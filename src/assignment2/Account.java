@@ -75,7 +75,7 @@ public class Account {
                "\n               BANK STATEMENT" +
                "\n---------------------------------------------" +
                "\nAccount Name : " + this.accountName +
-               "\nBank Balance : " + this.bankBalance + "$" +
+               "\nBank Balance : " + String.format("%.2f",this.bankBalance) + "$" +
                "\nBank ID      : " + this.bankID +
                "\nInterest Rate: " + (this.interestRate*100) + "%" +
                "\n---------------------------------------------\n";
