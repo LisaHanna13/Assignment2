@@ -60,7 +60,7 @@ public class Client {
         int bankIDDigit;
         while (!keyboard.hasNextInt()){
             System.out.print("Sorry, that is not a valid digit. Please try again: ");
-            keyboard.nextLine();
+            keyboard.next();
         }
         
         //Store the data
@@ -97,6 +97,7 @@ public class Client {
                     //Make sure user chooses an int
                     while(!keyboard.hasNextInt()){
                         System.out.print("That is not an integer. Please try again:");
+                        keyboard.next();
                     }
                     //Store the data
                     menuChoice = keyboard.nextInt();
@@ -124,8 +125,8 @@ public class Client {
                        
                         //Make sure the deposit is a valid value.
                         while (!keyboard.hasNextDouble()){
-                            System.out.println("That is not a valid input. Please try again: ");
-                            keyboard.nextLine();
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
                         }
                         //Store the data
                         deposit = keyboard.nextDouble();
@@ -152,8 +153,8 @@ public class Client {
                         
                         //Make sure the value is a double
                         while (!keyboard.hasNextInt()){
-                            System.out.println("That is not a valid input. Please try again: ");
-                            keyboard.nextLine();
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
                         }
                         //Store the data
                         withdraw = keyboard.nextInt();
@@ -165,7 +166,7 @@ public class Client {
                             //Increment the counter for this menu option
                             counter3++;
                             //Use the accessor withdraw to reset the value of bankBalance
-                            account1.setBalance(account1.getBankBalance() - deposit);
+                            account1.setBalance(account1.getBankBalance() - withdraw);
                             
                             //Print new balance
                              System.out.println("Your bank balance is now " + String.format("%.2f",account1.bankBalance) + "$.");
@@ -198,8 +199,8 @@ public class Client {
                         
                         //Make sure the value is a double
                         while (!keyboard.hasNextDouble()){
-                            System.out.println("That is not a valid input. Please try again: ");
-                            keyboard.nextLine();
+                            System.out.print("That is not a valid input. Please try again: ");
+                            keyboard.next();
                         }
                         //Store the data
                         transferMoney = keyboard.nextDouble();
@@ -209,7 +210,8 @@ public class Client {
                             System.out.println("Sorry, that is not a valid input. You will have to try again.\n");
                         }else{
                             //Print instructions
-                            System.out.println("Here are the two other accounts available: " + account2.getAccountName() + ", " + account3.getAccountName());
+                            System.out.println("Here are the two other accounts available: " + account2.getAccountName() + ", and " + account3.getAccountName());
+                            System.out.println("Please make sure to enter their full name.");
                             System.out.print("Which account would you like to transfer the money to?: ");
                             
                             //This is a problem I have noticed with java since the beginning of the semester; when trying to use keyboard.nextLine() two times
@@ -228,7 +230,7 @@ public class Client {
                                 account1.setBalance(account1.bankBalance - transferMoney);
                                 //Print confirmation
                                 System.out.println("\nYou have successfully transfered " + transferMoney + "$ to " + account2.accountName);
-                                System.out.println("Your bank balance is now " + account1.getBankBalance() + ".\n");
+                                System.out.println("Your bank balance is now " + String.format("%.2f",account1.getBankBalance()) + ".\n");
                                 
                             }else if (accountChoice.equalsIgnoreCase(account3.accountName)){
                                 //Increment the counter for this menu option
@@ -290,6 +292,7 @@ public class Client {
             //PART 5: IF SECOND ACCOUNT IS CHOSEN
             //------------------------------------------------------------------------------------------------------------------
             case 2:
+                
                 break;
                 
             //PART 6: IF THIRD ACCOUNT IS CHOSEN
@@ -308,12 +311,12 @@ public class Client {
         System.out.println("\nThank you for user the Ocean Trust Bank.");
         System.out.println("Here is a summary of all the actions you have done in this session: ");
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("You have printed a bank statement " + counter1 + " times.");
-        System.out.println("You have deposited money " + counter2 + " times.");
-        System.out.println("You have withdrawn money " + counter3 + " times.");
-        System.out.println("You have transfered money " + counter4 + " times.");
-        System.out.println("You have looked at future bank balance values " + counter5 + " times.");
-        System.out.println("You have looked for another account " + counter6 + " times.");
+        System.out.println("You have printed a bank statement " + counter1 + " time(s).");
+        System.out.println("You have deposited money " + counter2 + " time(s).");
+        System.out.println("You have withdrawn money " + counter3 + " time(s).");
+        System.out.println("You have transfered money " + counter4 + " time(s).");
+        System.out.println("You have looked at future bank balance values " + counter5 + " time(s).");
+        System.out.println("You have looked for another account " + counter6 + " time(s).");
         System.out.println("--------------------------------------------------------------------");
         System.out.println("We hope to see you again soon! Goodbye.");    
     }
