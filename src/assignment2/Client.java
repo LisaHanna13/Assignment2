@@ -2,9 +2,10 @@
  * This is the package for Assignment 2
  */
 package assignment2;
-import java.util.*;
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Date;
 
 /**
  * This is the class that will be used to execute the constructors and methods
@@ -17,7 +18,7 @@ public class Client {
      * @throws FileNotFoundException 
      */
     public static void main(String[] args) throws FileNotFoundException {
-        //PART 1: CREATING OBJECTS FOR 3 ACCOUNTS AND FOR MENU
+        //PART 1: CREATING OBJECTS FOR 3 ACCOUNTS, FOR DATE, AND FOR MENU
         //--------------------------------------------------------------------------------------------------------------------
         
         //Create a scanner that will read a file, and a scanner for user input
@@ -35,16 +36,23 @@ public class Client {
         accountName1 = readFile.nextLine();
         bankBalance1 = readFile.nextDouble();
         Account account1 = new Account(accountName1, bankBalance1, "1-4833-1200-3412-3456");
+        //Test out one of the mutators
+        account1.setAccountName("Henry Mills");
         
         blank1 = readFile.nextLine();
         accountName2 = readFile.nextLine();
         bankBalance2 = readFile.nextDouble();
         Account account2 = new Account(accountName2, bankBalance2, "2-4217-6453-2453-3145-B");
+        //Test out another mutator
+        account2.setBankID("2-4217-6453-2453-3145");
         
         blank2 = readFile.nextLine();
         accountName3 = readFile.nextLine();
         bankBalance3 = readFile.nextDouble();
-        Account account3 = new Account(accountName3, bankBalance3, "3-5353-6572-6475-3646-C");
+        Account account3 = new Account(accountName3, bankBalance3, "3-5353-6572-6475-3646");
+        
+        //Create object for date class
+        Date today = new Date();
         
         //Create object from MenuOptions file
         MenuOptions menu = new MenuOptions();
@@ -53,6 +61,7 @@ public class Client {
         //---------------------------------------------------------------------------------------------------------------------
         
         //Print introduction
+        System.out.println("BEGINNING OF SESSION: " + today);
         System.out.println("Hello. Welcome to the Ocean Trust Bank.");
         System.out.print("Please, identify yourself by entering the first number of your bankID: ");
         
@@ -275,6 +284,7 @@ public class Client {
                     }else if (menuChoice == 6){
                         counter6++;
                         System.out.println("You have chosen to see if you own another account in this bank");
+                        System.out.println("Your Bank ID is: " + account1.getID());
                         Boolean otherAccount = account1.equals(account2);
                         Boolean otherAccount2 = account1.equals(account3);
                         if (otherAccount == false && otherAccount2 == false){
@@ -478,6 +488,7 @@ public class Client {
                     }else if (menuChoice == 6){
                         counter6++;
                         System.out.println("You have chosen to see if you own another account in this bank");
+                        System.out.println("Your Bank ID is: " + account2.getID());
                         Boolean otherAccount = account2.equals(account1);
                         Boolean otherAccount2 = account2.equals(account3);
                         if (otherAccount == false && otherAccount2 == false){
@@ -682,6 +693,7 @@ public class Client {
                     }else if (menuChoice == 6){
                         counter6++;
                         System.out.println("You have chosen to see if you own another account in this bank");
+                        System.out.println("Your Bank ID is: " + account3.getID());
                         Boolean otherAccount = account3.equals(account2);
                         Boolean otherAccount2 = account3.equals(account1);
                         if (otherAccount == false && otherAccount2 == false){
@@ -714,6 +726,7 @@ public class Client {
         System.out.println("You have looked at future bank balance values " + counter5 + " time(s).");
         System.out.println("You have looked for another account " + counter6 + " time(s).");
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("We hope to see you again soon! Goodbye.");    
+        System.out.println("We hope to see you again soon! Goodbye.");  
+        System.out.println("END OF SESSION.");
     }
 }
