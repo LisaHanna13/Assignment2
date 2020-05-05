@@ -24,4 +24,4 @@ the interest part of the bank. Adding interest as an extra feature was not diffi
 how much money would be in the bank in the future based on that interest. I have never done a calculation as such, so I did
 need to do some research. In the end, I found that using the Math class would be most practical for this section.
 
-ADDRESS OF REMOTE REPOSITORY:
+ADDRESS OF REMOTE REPOSITORY: https://github.com/LisaHanna13/Assignment2
