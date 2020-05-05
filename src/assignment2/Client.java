@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Client {
     /**
-     * This is the main method used for this class. 
+     * Main method
      * @param args the command line arguments
      * @throws FileNotFoundException 
      */
