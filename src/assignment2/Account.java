@@ -13,8 +13,6 @@ public class Account {
     double bankBalance;
     
     //Creating static instance variables
-    static double  oneDollarBill = 1, fiveDollarBill = 5, tenDollarBill = 10, twentyDollarBill = 20,
-                   fiftyDollarBill = 50, hundredDollarBill = 100;
     static double interestRate = 0.03;
     
     /**
@@ -54,6 +52,30 @@ public class Account {
      */
     public String getAccountName(){
         return accountName;
+    }
+    
+    /**
+     * Use this mutator to modify an account name
+     * @param accountName 
+     */
+    void setAccountName(String accountName){
+        this.accountName = accountName;
+    }
+    
+    /**
+     * Use this accessor to get the bankID of an account
+     * @return bankID
+     */
+    public String getID(){
+        return bankID;
+    }
+    
+    /**
+     * Use this mutator to modify a bankID.
+     * @param bankID 
+     */
+    void setBankID(String bankID){
+        this.bankID = bankID;
     }
     
     /**
