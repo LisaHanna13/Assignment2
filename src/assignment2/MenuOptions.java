@@ -8,10 +8,14 @@ package assignment2;
  */
 public class MenuOptions {
     /**
-     * This empty constructor can be used to create a menu object
+     * Empty constructor for menu object
      */
     public MenuOptions(){}
     
+    /**
+     * Display formatted menu options for users
+     * @return menu options
+     */
     public String toString(){
         return "Please choose one option: " +
                "\n---------------------------------------------------" +
