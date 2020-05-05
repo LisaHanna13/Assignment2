@@ -2,7 +2,6 @@
  * This is the package for assignment 2.
  */
 package assignment2;
-
 /**
  * This class will be used to print the menu options
  * @author lisa-
