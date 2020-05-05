@@ -16,7 +16,7 @@ public class Account {
     static double interestRate = 0.03;
     
     /**
-     * This constructor is used to set up basic information about a bank account
+     * Set up basic information about bank account
      * @param accountName
      * @param bankBalance 
      * @param bankID
@@ -28,8 +28,7 @@ public class Account {
     }
     
     /**
-     * When the client withdraws an amount, the bankBalance must be set to a new value
-     * This is therefore a mutator (setter)
+     * Mutator: Sets bank balance value
      * @param BankBalance 
      */
     void setBalance(double bankBalance){
@@ -37,8 +36,7 @@ public class Account {
     }
     
     /**
-     * This accessor (getter) can be used to get the bank balance of an account when
-     * wanting to transfer money between accounts
+     * Accessor: Get bank balance value
      * @return bankBalance
      */
     public double getBankBalance(){
@@ -46,8 +44,7 @@ public class Account {
     }
     
     /**
-     * This accessor (getter) can be used to get the accountNames available when wanting to
-     * do a transfer between accounts
+     * Accessor: Get account name
      * @return accountName
      */
     public String getAccountName(){
@@ -55,7 +52,7 @@ public class Account {
     }
     
     /**
-     * Use this mutator to modify an account name
+     * Mutator: Set account name
      * @param accountName 
      */
     void setAccountName(String accountName){
@@ -63,7 +60,7 @@ public class Account {
     }
     
     /**
-     * Use this accessor to get the bankID of an account
+     * Accessor: Get bank ID value
      * @return bankID
      */
     public String getID(){
@@ -71,7 +68,7 @@ public class Account {
     }
     
     /**
-     * Use this mutator to modify a bankID.
+     * Mutator: Set bank ID value
      * @param bankID 
      */
     void setBankID(String bankID){
@@ -79,8 +76,7 @@ public class Account {
     }
     
     /**
-     * This equals method can be used for a client to see if he has a second bank account;
-     * if they do, there will be two matching bankID's
+     * Compare two bank ID's
      * @param other
      * @return true if both bankID's are the same
      */
@@ -89,8 +85,7 @@ public class Account {
     }
     
     /**
-     * Use this method for a clean statement with the account name, bank balance, bank ID, and interest rate
-     * @return a printed bank statement 
+     * Display formatted bank statement
      */
     public String toString(){
         return "---------------------------------------------" +
@@ -104,7 +99,7 @@ public class Account {
     }
     
     /**
-     * Use this method to get the interest rate, useful for menu option 5
+     * Accessor: Get interest rate value
      * @return interestRate
      */
     public double getInterestRate(){
